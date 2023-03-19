@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from my_secrets import API_KEY
+from .my_secrets import API_KEY
 from .models import Chat
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
