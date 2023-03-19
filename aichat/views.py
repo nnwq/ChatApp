@@ -9,6 +9,7 @@ import openai
 
 def chat(request):
     chats = Chat.objects.all()
+    # render takes 3 arguments: request, template, context
     return render(request, 'chat.html', {
         'chats': chats,
     })
@@ -16,8 +17,9 @@ def chat(request):
 
 @csrf_exempt
 def ajax(request):
+    # check whether the request is ajax
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-
+        # text in the input field and send it to the API
         text = request.POST.get('text')
         print(text)
 
@@ -29,6 +31,7 @@ def ajax(request):
             ]
         )
 
+        # get response from API and display it
         response = res.choices[0].message["content"]
         print(response)
 
